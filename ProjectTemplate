@@ -1,0 +1,40 @@
+import pygame
+
+s1, s2 = 100, 50  # block sides
+x1, y1 = 1000, 250  # bigger block coords
+x2, y2 = 500, 300  # smaller block coords
+
+v1 = -0.5  # initial velocity of block 1
+v2 = 0  # initial velocity of block 2
+
+-------Write your code here--------
+window = pygame.display.set_mode((1200, 500))
+    
+run = True
+while run:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+
+    x1 += v1  # changing block coordinates according to velocity
+
+    # changing velocity after collision
+    if not x2 + s2 < x1 or x1 + s1 < x2:
+        v1, v2 = v2,v1
+        
+
+    # When the block hits the left wall, the speed is reversed
+    ----Write You Code Here---------
+    
+    if x1 < 0 or x1 > 1200:
+         v1 *= -1
+    if x2 < 0 or x2 > 500:
+         ---------Write your code here--------    
+   
+    window.fill((127, 127, 127))
+    
+   -----Write Your Code here ------------
+    pygame.draw.rect(window, (192, 0, 0), (x1, y1, s1, s1))
+    pygame.display.update()
+
+pygame.quit()
